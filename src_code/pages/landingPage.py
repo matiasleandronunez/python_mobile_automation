@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 class LandingPage(BasePage):
     instance = None
     _SEARCH_BUTTON_XPATH = "(//android.widget.ImageView[@content-desc='Search Wikipedia'])[1]"
-    _SEARCH_INPUT_ID = f"{super().package_name}:id/search_src_text"
-    _RESULT_LIST_ID = f"{super().package_name}:id/fragment_feed_feed"
+    _SEARCH_INPUT_ID = f"{package_name}:id/search_src_text"
+    _RESULT_LIST_ID = f"{package_name}:id/fragment_feed_feed"
 
     def __init__(self, driver):
         super().__init__(driver)
