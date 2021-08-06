@@ -43,3 +43,9 @@ services:
       - MOBILE_WEB_TEST=false
       - AUTO_RECORD=true
 
+  tests:
+    build:
+      context: ./src_code
+      dockerfile: Dockerfile
+    container_name: tests
+    tty: true

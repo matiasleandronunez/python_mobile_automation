@@ -1,42 +1,18 @@
-from pages.basePage import BasePage, Locator
+from pages.basePage import BasePage
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 
-class StorefrontPage(BasePage):
+class LandingPage(BasePage):
     instance = None
-    _CART_QUANTITY = Locator(By.CSS_SELECTOR, "div.cartDigit")
-    _CHECKOUT_BUTTON = Locator(By.CSS_SELECTOR, "div.checkout-button > a")
-    _CREATE_USER_LINK = Locator(By.CSS_SELECTOR, "div.buttonSection > div > button:nth-child(1)")
-    _SIGN_IN_LINK = Locator(By.CSS_SELECTOR, "div.buttonSection > div > button:nth-child(2)")
-    _ITEM_CARDS = Locator(By.CSS_SELECTOR, "div.tile")
+    _SEARCH_BUTTON_XPATH = "(//android.widget.ImageView[@content-desc='Search Wikipedia'])[1]"
+    _SEARCH_INPUT_ID = f"{super().package_name}:id/search_src_text"
+    _RESULT_LIST_ID = f"{super().package_name}:id/fragment_feed_feed"
 
     def __init__(self, driver):
         super().__init__(driver)
 
-    def get_cart_quantity(self, search_term):
-        cart_q = super().get_element(self._CART_QUANTITY)
-        return int(cart_q.text)
-
-    def get_tile_by_item_name(self, item_name):
-        return super().get_element(Locator(By.XPATH, f"//div[@class='tileTitle'][text()='{item_name}']/ancestor::div[@class='tile']"))
-
-    def add_to_cart_by_item_name(self, item_name, quantity=1):
-        i = self.get_tile_by_item_name(item_name)
-
-        for x in range(quantity):
-            i.find_element(by=By.CSS_SELECTOR, value="div.tileAdd > button")\
-                .click()
-
-    def checkout_cart(self):
-        self.get_element(self._CHECKOUT_BUTTON).click()
-
-    def create_user_link(self):
-        self.get_element(self._CREATE_USER_LINK).click()
-
-    def sign_in_link(self):
-        self.get_element(self._SIGN_IN_LINK).click()
-
-    def displayed_cards_count(self):
-        return sum(1 for i in self.get_elements(self._ITEM_CARDS) if i.is_displayed())
+    def search_article(self, search_term):
+        self.driver.get_driver().find_element_by_xpath(self._SEARCH_BUTTON_XPATH).click()
+        self.driver.get_driver().find_elements_by_id(self._SEARCH_INPUT_ID).send_keys(search_term)
 

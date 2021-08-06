@@ -1,5 +1,2 @@
-behave 
-selenium
+behave
 Appium-Python-Client
-requests
-Faker
