@@ -15,6 +15,7 @@ class Driver(object):
             capabilities['appActivity'] = settings.main_activity
             self.driver = appium_wd.Remote(command_executor=f"{settings.grid_uri}/wd/hub",
                                                desired_capabilities=capabilities)
+            self.driver.implicitly_wait(settings.driver_timeout)
         else:
             pass
 
