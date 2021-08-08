@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Running docker-compose"
-docker-compose up </dev/null &>/dev/null &
+docker-compose up  --build </dev/null &>/dev/null &
 
 status=""
 

@@ -12,7 +12,7 @@ class Driver(object):
         if settings.execute_in_grid:
             capabilities['appPackage'] = settings.app_package
             capabilities['platformName'] = 'Android'
-
+            capabilities['appActivity'] = settings.main_activity
             self.driver = appium_wd.Remote(command_executor=f"{settings.grid_uri}/wd/hub",
                                                desired_capabilities=capabilities)
         else:
@@ -20,6 +20,9 @@ class Driver(object):
 
     def get_driver(self):
         return self.driver
+
+    def start_app(self):
+        self.driver.launch_app()
 
     def stop_driver(self):
         self.driver.close_app()

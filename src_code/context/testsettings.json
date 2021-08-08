@@ -1,5 +1,6 @@
 {
   "app_package": "org.wikipedia.alpha",
+  "main_activity": "org.wikipedia.main.MainActivity",
   "execute_in_grid": true,
   "grid_uri": "http://selenium-hub:4444",
   "driver_timeout": "10"
