@@ -17,10 +17,10 @@ class ArticlePage(BasePage):
     def get_article_main_title(self):
         return self.driver.get_driver().\
             find_element_by_id(self._ARTICLE_HEADER_ID).\
-            find_element_by_id(self._ARTICLE_TITLE_ID).text
+            find_element_by_id(self._ARTICLE_TITLE_ID).text.strip()
 
     def get_article_main_title_epy(self):
         return self.driver.get_driver().\
             find_element_by_id(self._ARTICLE_HEADER_ID).\
-            find_element_by_id(self._ARTICLE_TITLES_EPY_ID).text
+            find_element_by_id(self._ARTICLE_TITLES_EPY_ID).text.strip()
 

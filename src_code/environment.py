@@ -1,4 +1,5 @@
 from pages.landingPage import LandingPage
+from pages.articlePage import ArticlePage
 from context import driver
 
 def before_feature(context, feature):
@@ -9,6 +10,7 @@ def before_scenario(context, scenario):
 
     # Instantiate pages into context for use within the test
     context.landing_page = LandingPage(context.driver)
+    context.article_page = ArticlePage(context.driver)
 
     #launch the app
     context.driver.start_app()
